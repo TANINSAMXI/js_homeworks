@@ -24,8 +24,11 @@ console.log(nextAge);
 
 //#5
 
-const isAdult = age >= 18;
+const isAdult = numericAge >= 18;
 console.log(isAdult);
+
+
+
 
 
 
