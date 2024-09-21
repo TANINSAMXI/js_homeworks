@@ -4,7 +4,7 @@ const pet = {
     petName: 'cat',
     petSpecies: 'Marko',
 }
-const getFullName = function () {
+const getPetInform = function () {
     return `${this.petName} ${this.petSpecies}`
 }
 const ourApply = function (func, context, ...args) {
@@ -20,6 +20,6 @@ const ourBind = (func = null, context = undefined, args = []) => {
         return ourApply(func, context, ...args)
     }
 }
-const bindPetInform = ourBind(getFullName, pet)
+const bindPetInform = ourBind(getPetInform, pet)
 console.log(bindPetInform)
 console.log(bindPetInform())
