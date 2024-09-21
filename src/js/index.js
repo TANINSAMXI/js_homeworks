@@ -1,11 +1,11 @@
 'use strict'
 
 const pet = {
-    petName: 'cat',
-    petSpecies: 'Marko',
+    petName: 'Marko',
+    petSpecies: 'cat',
 }
 const getPetInform = function () {
-    return `${this.petName} ${this.petSpecies}`
+    return `${this.petSpecies} ${this.petName}`
 }
 const ourApply = function (func, context, ...args) {
     let result = null
