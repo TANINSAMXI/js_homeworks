@@ -1,0 +1,38 @@
+body {
+    background-image: url(https://cdn.pixabay.com/photo/2020/07/02/04/31/matrix-5361690_1280.png);
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+table {
+    width: 25%;
+    color: lawngreen;
+    border-collapse: collapse;
+    margin: 5px;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeInOut 20s infinite;
+}
+td {
+    border: 2px solid lawngreen;
+    text-align: center;
+    padding: 10px;
+}
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    40% {
+        opacity: 1;
+        visibility: visible;
+    }
+    60% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
