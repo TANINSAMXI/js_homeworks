@@ -1,44 +1,24 @@
 'use strict'
 
-const IMG_FOLDER = './images'
-const IMG_EXT = '.jpg'
+const IMAGE_DIRECTORY = './images'
+const IMAGE_EXTENSION = '.jpg'
 
-const appendHTMLElement = (parentEl = null, elementToAppend = null) => {
-    if (!parentEl || !elementToAppend) return
-    parentEl.append(elementToAppend)
+// Function to add an HTML element to a parent element
+const appendHTMLElement = (parentElement = null, element = null) => {
+    if (!parentElement || !element) return
+    parentElement.appendChild(element)
 }
-
-const getRandomNumber = () => {
-    const num = Math.floor(Math.random() * 10)
-    if (num === 0) return 1
-    return num
+const randomNumber = () => {
+    const number = Math.floor(Math.random() * 9) + 1
+    return Math.floor(number)
 }
-
-const generateImg = (imgName) => {
-    const img = document.createElement('img')
-    img.src = `${IMG_FOLDER}/${imgName + IMG_EXT}`
-    img.alt = `${IMG_FOLDER}/${imgName + IMG_EXT}`
-    img.title = `${IMG_FOLDER}/${imgName + IMG_EXT}`
-    return img
+const createImg = (imageName) => {
+    const imgElement = document.createElement('img')
+    const imagePath = `${IMAGE_DIRECTORY}/${imageName}${IMAGE_EXTENSION}`
+    imgElement.src = imagePath
+    imgElement.alt = imagePath
+    imgElement.title = imagePath
+    return imgElement
 }
-
-const imgToAppend = generateImg(getRandomNumber())
-
-appendHTMLElement(document.body, imgToAppend)
-
-// const nineJpg = [
-//     '1.jpg',
-//     '2.jpg',
-//     '3.jpg',
-//     '4.jpg',
-//     '5.jpg',
-//     '6.jpg',
-//     '7.jpg',
-//     '8.jpg',
-//     '9.jpg',
-// ]
-// const someOfNine = () => {
-//     document.getElementById('img').src =
-//         `images/${nineJpg[~~(Math.random() * nineJpg.length)]}`
-// }
-// someOfNine()
+const randomImageElement = createImg(randomNumber())
+appendHTMLElement(document.body, randomImageElement)
