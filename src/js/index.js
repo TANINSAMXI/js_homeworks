@@ -1,13 +1,15 @@
 'use strict'
 
-const myText = document.getElementById('textField')
-const myDiv = document.getElementById('appear')
-
-myDiv.style.display = 'none'
-myText.addEventListener('focus', () => {
-    myDiv.style.display = 'block'
+const inputText = document.getElementById('textField')
+const displayDiv = document.getElementById('appear')
+displayDiv.style.display = 'none'
+document.addEventListener('focusin', () => {
+    if (document.activeElement === inputText) {
+        displayDiv.style.display = 'flex'
+    }
 })
-
-myText.addEventListener('blur', () => {
-    myDiv.style.display = 'none'
+document.addEventListener('focusout', () => {
+    if (document.activeElement !== inputText) {
+        displayDiv.style.display = 'none'
+    }
 })
