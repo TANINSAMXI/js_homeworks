@@ -7,8 +7,58 @@
             rel="stylesheet"
             href="./../node_modules/bootstrap/dist/css/bootstrap.min.css"
         />
+        <link rel="stylesheet" href="styles/all.css" />
     </head>
     <body>
+        <main>
+            <h1 class="text-center mt-5 mb-5">TODO LIST</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <form data-todo-form>
+                            <div class="mb-3">
+                                <label class="form-label" for="input_main"
+                                    >Task title</label
+                                >
+                                <input
+                                    id="input_main"
+                                    type="text"
+                                    name="title"
+                                    class="form-control"
+                                    placeholder="Title"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="textarea_main"
+                                    >Task body</label
+                                >
+                                <textarea
+                                    id="textarea_main"
+                                    name="description"
+                                    class="form-control"
+                                    placeholder="Task body"
+                                    cols="30"
+                                    rows="10"
+                                    required
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                disabled
+                            >
+                                Create Task!
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="task-list" id="todoItems"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
         <script src="../src/js/index.js"></script>
     </body>
 </html>
