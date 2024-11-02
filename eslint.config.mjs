@@ -6,13 +6,20 @@ import pluginJsxA11y from "eslint-plugin-jsx-a11y";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 
 export default [
-    { files: ["**/*.{js,mjs,cjs,jsx}"] },
-    { languageOptions: { globals: globals.browser } },
-    pluginJs.configs.recommended,
-    pluginReact.configs.flat.recommended,
     {
+        files: ["**/*.{js,mjs,cjs,jsx}"],
+        languageOptions: {
+            ecmaVersion: "latest",
+            sourceType: "module",
+            globals: globals.browser,
+        },
+        plugins: {
+            import: pluginImport,
+            react: pluginReact,
+            "jsx-a11y": pluginJsxA11y,
+            "react-hooks": pluginReactHooks,
+        },
         rules: {
-            // Airbnb Base Rules (just a small sample)
             "import/no-unresolved": "error",
             "import/named": "error",
             "import/default": "error",
@@ -22,11 +29,8 @@ export default [
             "react/prop-types": "off",
             "jsx-a11y/anchor-is-valid": ["warn", { aspects: ["noHref", "invalidHref"] }],
         },
-        plugins: {
-            import: pluginImport,
-            react: pluginReact,
-            "jsx-a11y": pluginJsxA11y,
-            "react-hooks": pluginReactHooks,
-        },
     },
+    pluginJs.configs.recommended,
+    pluginReact.configs.flat.recommended
 ];
+
