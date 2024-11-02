@@ -16,7 +16,7 @@ Student.prototype._setAttendance = function (isLessonAttended) {
     if (this.currentLesson >= 10) throw new Error('Attendance limit exceeded')
 
     this.attendance[this.currentLesson] = isLessonAttended
-    if (isLessonAttended) this.currentLesson += 1 // Increment only if present
+    if (isLessonAttended) this.currentLesson += 1
 }
 
 Student.prototype.present = function () {
