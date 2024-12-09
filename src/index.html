@@ -7,8 +7,59 @@
             rel="stylesheet"
             href="./../node_modules/bootstrap/dist/css/bootstrap.min.css"
         />
+        <link rel="stylesheet" href="./scss/styles.css" />
     </head>
     <body>
-        <script src="../src/js/index.js"></script>
+        <div class="container mt-4">
+            <form id="idForm" class="mb-4">
+                <div class="mb-3">
+                    <label for="userId" class="form-label"
+                        >Enter Post ID:</label
+                    >
+                    <input
+                        type="number"
+                        id="userId"
+                        name="userId"
+                        class="form-control"
+                        required
+                        min="1"
+                        max="100"
+                    />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Fetch Post
+                </button>
+            </form>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div data-post-card class="card">
+                        <div class="card-body">
+                            <h5 data-post-title class="card-title">
+                                Enter Post ID to see details
+                            </h5>
+                            <p data-post-body class="card-text"></p>
+                            <button
+                                disabled
+                                data-comments-btn
+                                class="btn btn-primary"
+                            >
+                                Show Comments
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Comments</h5>
+                            <div id="comments" class="list-group"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="../src/js/index.js"></script>
     </body>
 </html>
