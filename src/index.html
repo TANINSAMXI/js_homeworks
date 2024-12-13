@@ -9,6 +9,27 @@
         />
     </head>
     <body>
-        <script src="../src/js/index.js"></script>
+        <div class="container mt-5">
+            <form id="city-form" style="max-width: 20%">
+                <div class="form-group">
+                    <label for="city"></label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="city"
+                        placeholder="Enter city name"
+                    />
+                </div>
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                    style="margin-top: 10px"
+                >
+                    Check Weather
+                </button>
+            </form>
+            <div id="weather-info" class="mt-4"></div>
+        </div>
+        <script type="module" src="../src/js/index.js"></script>
     </body>
 </html>
