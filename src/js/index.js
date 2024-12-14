@@ -22,15 +22,15 @@ const weatherCard = document.querySelector('#weatherCard')
 
 const updateWeatherCard = (data) => {
     weatherCard.querySelector('.card-title').innerHTML =
-        ` ${data.name} | ${data.main.temp}°C`
+        ` ${data.name} : ${data.main.temp}°C`
     weatherCard.querySelector('#weatherInfo').innerHTML =
-        `Description: ${data.weather[0].description}`
+        `Description :  ${data.weather[0].description}`
     weatherCard.querySelector('.card-pressure').innerHTML =
-        `Pressure: ${data.main.pressure} mm Hg.`
+        `Pressure :  ${data.main.pressure} mm Hg.`
     weatherCard.querySelector('.card-humidity').innerHTML =
-        `Humidity: ${data.main.humidity}%`
+        `Humidity :  ${data.main.humidity}%`
     weatherCard.querySelector('.card-wind').innerHTML =
-        `Wind: ${data.wind.speed} m/s, direction: ${data.wind.deg}°`
+        `Wind :  ${data.wind.speed} m/s, direction: ${data.wind.deg}°`
     weatherCard.querySelector('.col-md-4').innerHTML =
         `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" alt="icon" >`
     weatherCard.className = 'card mt-4'
