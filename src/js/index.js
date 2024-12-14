@@ -1,31 +1,46 @@
 'use strict'
 
-import { fetchWeather } from './weather.js'
-import { displayWeather } from './display.js'
+/**
+ * @param {Object} data
+ * @param {Object} data.main
+ * @param {number} data.main.temp
+ * @param {number} data.main.pressure
+ * @param {number} data.main.humidity
+ * @param {Object[]} data.weather
+ * @param {string} data.weather[0]
+ * @param {string} data.weather[0]
+ * @param {Object} data.wind
+ * @param {number} data.wind.speed
+ * @param {number} data.wind.deg
+ */
 
-const form = document.getElementById('city-form')
-const cityInput = document.getElementById('city')
-const weatherInfoContainer = document.getElementById('weather-info')
+import { fetchWeatherData } from './weather.js'
+import { handleFormSubmit } from './handler.js'
 
-form.addEventListener('submit', (event) => {
+const weatherForm = document.querySelector('#weatherForm')
+const weatherCard = document.querySelector('#weatherCard')
+
+const updateWeatherCard = (data) => {
+    weatherCard.querySelector('.card-title').innerHTML =
+        ` ${data.name} | ${data.main.temp}°C`
+    weatherCard.querySelector('#weatherInfo').innerHTML =
+        `Description: ${data.weather[0].description}`
+    weatherCard.querySelector('.card-pressure').innerHTML =
+        `Pressure: ${data.main.pressure} mm Hg.`
+    weatherCard.querySelector('.card-humidity').innerHTML =
+        `Humidity: ${data.main.humidity}%`
+    weatherCard.querySelector('.card-wind').innerHTML =
+        `Wind: ${data.wind.speed} m/s, direction: ${data.wind.deg}°`
+    weatherCard.querySelector('.col-md-4').innerHTML =
+        `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" alt="icon" >`
+    weatherCard.className = 'card mt-4'
+}
+
+const fetchWeatherAndRender = async (event) => {
     event.preventDefault()
-    const city = cityInput.value.trim()
-    if (city) {
-        fetchWeather(city)
-            .then((weatherData) => {
-                const weatherInfo = {
-                    name: weatherData.name,
-                    temp: weatherData.main.temp,
-                    description: weatherData.weather[0].description,
-                    humidity: weatherData.main.humidity,
-                    windSpeed: weatherData.wind.speed,
-                    windDeg: weatherData.wind.deg,
-                    icon: `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`,
-                }
-                displayWeather(weatherInfo)
-            })
-            .catch((error) => {
-                weatherInfoContainer.innerHTML = `<p class="text-danger">Error: ${error}</p>`
-            })
-    }
-})
+    const cityInput = handleFormSubmit(weatherForm)
+    const weatherData = await fetchWeatherData(cityInput)
+    updateWeatherCard(weatherData)
+}
+
+weatherForm.addEventListener('submit', fetchWeatherAndRender)
